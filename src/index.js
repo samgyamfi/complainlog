@@ -1,13 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { StateProvider } from './StateProvider';
+import reducer, { initialState } from './reducer'
+import { ChakraProvider } from '@chakra-ui/react'
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+   <StateProvider initialState={initialState} reducer={reducer}>
+      <ChakraProvider>
+          <App />
+      </ChakraProvider>
+    </StateProvider>
   </React.StrictMode>
 );
 
