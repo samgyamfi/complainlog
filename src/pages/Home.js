@@ -5,7 +5,7 @@ import { Box, Heading, Container, Text, Button, Center, Flex } from "@chakra-ui/
 
 
 function home() {
-    const [dispatch] = appStateValue();
+    const [{state},dispatch] = appStateValue();
 
     const login = async () => {
        try {
@@ -18,6 +18,7 @@ function home() {
 
                 const { displayName , photoURL ,email , accessToken } = results.user;
                 const storage = window.localStorage;
+                storage.setItem('authUser', JSON.stringify({displayName , photoURL ,email , accessToken}));
             }
        } catch (error) {
             alert(error.message);
